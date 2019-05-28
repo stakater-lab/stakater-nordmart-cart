@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -38,7 +39,8 @@ public class CartEndpoint implements Serializable {
     @GET
     @Path("/{cartId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public ShoppingCart getCart(@PathParam("cartId") String cartId) {
+    public ShoppingCart getCart(@PathParam("cartId") String cartId, @RequestHeader("accept-encoding") String token) {
+        System.out.println("token : " + token);
         return shoppingCartService.getShoppingCart(cartId);
     }
 
