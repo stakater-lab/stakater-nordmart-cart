@@ -39,8 +39,7 @@ public class CartEndpoint implements Serializable {
     @GET
     @Path("/{cartId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public ShoppingCart getCart(@PathParam("cartId") String cartId, @RequestHeader("accept-encoding") String token) {
-        System.out.println("token : " + token);
+    public ShoppingCart getCart(@PathParam("cartId") String cartId) {
         return shoppingCartService.getShoppingCart(cartId);
     }
 
