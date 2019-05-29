@@ -129,11 +129,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public Product getProduct(String itemId) {
-        if (!productMap.containsKey(itemId)) {
-            // Fetch and cache products. TODO: Cache should expire at some point!
-            List<Product> products = nordmartCatalogService.products();
-            productMap = products.stream().collect(Collectors.toMap(Product::getItemId, Function.identity()));
-        }
+        List<Product> products = nordmartCatalogService.products();
+        productMap = products.stream().collect(Collectors.toMap(Product::getItemId, Function.identity()));
 
         return productMap.get(itemId);
     }
