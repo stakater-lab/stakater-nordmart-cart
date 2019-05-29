@@ -35,4 +35,18 @@ public class IstioHeaders
             this.otSpanId = null;
         }
     }
+
+    @Override
+    public String toString()
+    {
+        return "IstioHeaders{" +
+            "requestId='" + requestId + '\'' +
+            ", b3TraceId='" + b3TraceId + '\'' +
+            ", b3SpanId='" + b3SpanId + '\'' +
+            ", b3ParentSpanId='" + b3ParentSpanId + '\'' +
+            ", b3Sampled='" + b3Sampled + '\'' +
+            ", b3Flags='" + b3Flags + '\'' +
+            ", otSpanId='" + otSpanId + '\'' +
+            '}';
+    }
 }
