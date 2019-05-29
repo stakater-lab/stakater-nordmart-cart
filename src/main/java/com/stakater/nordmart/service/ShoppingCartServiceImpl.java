@@ -1,10 +1,8 @@
 package com.stakater.nordmart.service;
 
-import com.stakater.nordmart.common.IstioHeaders;
 import com.stakater.nordmart.model.Product;
 import com.stakater.nordmart.model.ShoppingCart;
 import com.stakater.nordmart.model.ShoppingCartItem;
-import com.stakater.nordmart.common.Utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,7 +30,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     ShippingService ss;
 
     @Autowired
-    CatalogService catalogService;
+    NordmartCatalogService nordmartCatalogService;
 
     @Autowired
     PromoService ps;
@@ -133,10 +131,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public Product getProduct(String itemId) {
         if (!productMap.containsKey(itemId)) {
             // Fetch and cache products. TODO: Cache should expire at some point!
-            IstioHeaders istioHeaders = new IstioHeaders(Utils.getCurrentHttpRequest());
-            List<Product> products = catalogService.products(istioHeaders.requestId, istioHeaders.b3TraceId,
-                    istioHeaders.b3SpanId, istioHeaders.b3ParentSpanId, istioHeaders.b3Sampled, istioHeaders.b3Flags,
-                    istioHeaders.otSpanId);
+            List<Product> products = nordmartCatalogService.products();
             productMap = products.stream().collect(Collectors.toMap(Product::getItemId, Function.identity()));
         }
 
