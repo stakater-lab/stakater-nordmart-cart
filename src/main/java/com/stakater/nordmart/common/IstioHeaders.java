@@ -16,23 +16,36 @@ public class IstioHeaders
     {
         if (request != null)
         {
-            this.requestId = request.getHeader("x-request-id");
-            this.b3TraceId = request.getHeader("x-b3-traceid");
-            this.b3SpanId = request.getHeader("x-b3-spanid");
-            this.b3ParentSpanId = request.getHeader("x-b3-parentspanid");
-            this.b3Sampled = request.getHeader("x-b3-sampled");
-            this.b3Flags = request.getHeader("x-b3-flags");
-            this.otSpanId = request.getHeader("x-ot-span-context");
+            this.requestId = request.getHeader("x-request-id") != null ?
+                request.getHeader("x-request-id") : "";
+
+            this.b3TraceId = request.getHeader("x-b3-traceid") != null ?
+                request.getHeader("x-b3-traceid") : "";
+
+            this.b3SpanId = request.getHeader("x-b3-spanid") != null ?
+                request.getHeader("x-b3-spanid") : "";
+
+            this.b3ParentSpanId = request.getHeader("x-b3-parentspanid") != null ?
+                request.getHeader("x-b3-parentspanid") : "";
+
+            this.b3Sampled = request.getHeader("x-b3-sampled") != null ?
+                request.getHeader("x-b3-sampled") : "";
+
+            this.b3Flags = request.getHeader("x-b3-flags") != null ?
+                request.getHeader("x-b3-flags") : "";
+
+            this.otSpanId = request.getHeader("x-ot-span-context") != null ?
+                request.getHeader("x-ot-span-context") : "";
         }
         else
         {
-            this.requestId = null;
-            this.b3TraceId = null;
-            this.b3SpanId = null;
-            this.b3ParentSpanId = null;
-            this.b3Sampled = null;
-            this.b3Flags = null;
-            this.otSpanId = null;
+            this.requestId = "";
+            this.b3TraceId = "";
+            this.b3SpanId = "";
+            this.b3ParentSpanId = "";
+            this.b3Sampled = "";
+            this.b3Flags = "";
+            this.otSpanId = "";
         }
     }
 
