@@ -1,18 +1,20 @@
 package com.stakater.nordmart.common;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 public class IstioHeaders
 {
-    public final String requestId;
-    public final String b3TraceId;
-    public final String b3SpanId;
-    public final String b3ParentSpanId;
-    public final String b3Sampled;
-    public final String b3Flags;
-    public final String otSpanId;
+    private final String requestId;
+    private final String b3TraceId;
+    private final String b3SpanId;
+    private final String b3ParentSpanId;
+    private final String b3Sampled;
+    private final String b3Flags;
+    private final String otSpanContext;
 
-    public IstioHeaders(HttpServletRequest request)
+    IstioHeaders(HttpServletRequest request)
     {
         if (request != null)
         {
@@ -22,7 +24,7 @@ public class IstioHeaders
             this.b3ParentSpanId = request.getHeader("x-b3-parentspanid");
             this.b3Sampled = request.getHeader("x-b3-sampled");
             this.b3Flags = request.getHeader("x-b3-flags");
-            this.otSpanId = request.getHeader("x-ot-span-context");
+            this.otSpanContext = request.getHeader("x-ot-span-context");
         }
         else
         {
@@ -32,9 +34,51 @@ public class IstioHeaders
             this.b3ParentSpanId = null;
             this.b3Sampled = null;
             this.b3Flags = null;
-            this.otSpanId = null;
+            this.otSpanContext = null;
         }
     }
+
+    public Map<String, String> getHeaders()
+    {
+        Map<String, String> headers = new HashMap<>();
+        if (requestId != null)
+        {
+            headers.put("x-request-id", requestId);
+        }
+
+        if (b3TraceId != null)
+        {
+            headers.put("x-b3-traceid", b3TraceId);
+        }
+
+        if (b3SpanId != null)
+        {
+            headers.put("x-b3-spanid", b3SpanId);
+        }
+
+        if (b3ParentSpanId != null)
+        {
+            headers.put("x-b3-parentspanid", b3ParentSpanId);
+        }
+
+        if (b3Sampled != null)
+        {
+            headers.put("x-b3-sampled", b3Sampled);
+        }
+
+        if (b3Flags != null)
+        {
+            headers.put("x-request-id", b3Flags);
+        }
+
+        if (otSpanContext != null)
+        {
+            headers.put("x-ot-span-context", otSpanContext);
+        }
+
+        return headers;
+    }
+
 
     @Override
     public String toString()
@@ -46,7 +90,7 @@ public class IstioHeaders
             ", b3ParentSpanId='" + b3ParentSpanId + '\'' +
             ", b3Sampled='" + b3Sampled + '\'' +
             ", b3Flags='" + b3Flags + '\'' +
-            ", otSpanId='" + otSpanId + '\'' +
+            ", otSpanContext='" + otSpanContext + '\'' +
             '}';
     }
 }

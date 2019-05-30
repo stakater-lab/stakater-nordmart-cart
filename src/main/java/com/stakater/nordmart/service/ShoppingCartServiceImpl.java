@@ -1,5 +1,6 @@
 package com.stakater.nordmart.service;
 
+import com.stakater.nordmart.common.Utils;
 import com.stakater.nordmart.model.Product;
 import com.stakater.nordmart.model.ShoppingCart;
 import com.stakater.nordmart.model.ShoppingCartItem;
@@ -30,7 +31,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     ShippingService ss;
 
     @Autowired
-    NordmartCatalogService nordmartCatalogService;
+    CatalogService catalogService;
 
     @Autowired
     PromoService ps;
@@ -129,7 +130,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public Product getProduct(String itemId) {
-        List<Product> products = nordmartCatalogService.products();
+        List<Product> products = catalogService.products(Utils.getIstioHeaders());
         productMap = products.stream().collect(Collectors.toMap(Product::getItemId, Function.identity()));
 
         return productMap.get(itemId);
