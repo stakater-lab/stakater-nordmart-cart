@@ -18,13 +18,13 @@ public class IstioHeaders
     {
         if (request != null)
         {
-            this.requestId = request.getHeader("x-request-id");
-            this.b3TraceId = request.getHeader("x-b3-traceid");
-            this.b3SpanId = request.getHeader("x-b3-spanid");
-            this.b3ParentSpanId = request.getHeader("x-b3-parentspanid");
-            this.b3Sampled = request.getHeader("x-b3-sampled");
-            this.b3Flags = request.getHeader("x-b3-flags");
-            this.otSpanContext = request.getHeader("x-ot-span-context");
+            this.requestId = request.getHeader(Constants.IH_REQUEST_ID);
+            this.b3TraceId = request.getHeader(Constants.IH_TRACE_ID);
+            this.b3SpanId = request.getHeader(Constants.IH_SPAN_ID);
+            this.b3ParentSpanId = request.getHeader(Constants.IH_PARENT_ID);
+            this.b3Sampled = request.getHeader(Constants.IH_SAMPLED);
+            this.b3Flags = request.getHeader(Constants.IH_FLAGS);
+            this.otSpanContext = request.getHeader(Constants.IH_SPAN_CONTEXT);
         }
         else
         {
@@ -43,37 +43,37 @@ public class IstioHeaders
         Map<String, String> headers = new HashMap<>();
         if (requestId != null)
         {
-            headers.put("x-request-id", requestId);
+            headers.put(Constants.IH_REQUEST_ID, requestId);
         }
 
         if (b3TraceId != null)
         {
-            headers.put("x-b3-traceid", b3TraceId);
+            headers.put(Constants.IH_TRACE_ID, b3TraceId);
         }
 
         if (b3SpanId != null)
         {
-            headers.put("x-b3-spanid", b3SpanId);
+            headers.put(Constants.IH_SPAN_ID, b3SpanId);
         }
 
         if (b3ParentSpanId != null)
         {
-            headers.put("x-b3-parentspanid", b3ParentSpanId);
+            headers.put(Constants.IH_PARENT_ID, b3ParentSpanId);
         }
 
         if (b3Sampled != null)
         {
-            headers.put("x-b3-sampled", b3Sampled);
+            headers.put(Constants.IH_SAMPLED, b3Sampled);
         }
 
         if (b3Flags != null)
         {
-            headers.put("x-request-id", b3Flags);
+            headers.put(Constants.IH_FLAGS, b3Flags);
         }
 
         if (otSpanContext != null)
         {
-            headers.put("x-ot-span-context", otSpanContext);
+            headers.put(Constants.IH_SPAN_CONTEXT, otSpanContext);
         }
 
         return headers;
