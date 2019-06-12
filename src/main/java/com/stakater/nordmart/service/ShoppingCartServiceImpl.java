@@ -120,7 +120,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
             //if product exist, create new product to reset price
             if (p != null) {
-                sci.setProduct(new Product(p.getItemId(), p.getName(), p.getDesc(), p.getPrice()));
+                sci.setProduct(new Product(p.getItemId(), p.getName(), p.getDesc(), p.getFileName(), p.getPrice()));
                 sci.setPrice(p.getPrice());
             }
 

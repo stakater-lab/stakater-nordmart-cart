@@ -8,17 +8,19 @@ public class Product implements Serializable {
 	private String itemId;
 	private String name;
 	private String desc;
+	private String fileName;
 	private double price;
 	
 	public Product() {
 		
 	}
 	
-	public Product(String itemId, String name, String desc, double price) {
+	public Product(String itemId, String name, String desc, String fileName, double price) {
 		super();
 		this.itemId = itemId;
 		this.name = name;
 		this.desc = desc;
+		this.fileName = fileName;
 		this.price = price;
 	}
 	public String getItemId() {
@@ -39,6 +41,12 @@ public class Product implements Serializable {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public double getPrice() {
 		return price;
 	}
@@ -49,6 +57,6 @@ public class Product implements Serializable {
 	@Override
 	public String toString() {
 		return "Product [itemId=" + itemId + ", name=" + name + ", desc="
-				+ desc + ", price=" + price + "]";
+				+ desc +  ", fileName=" + fileName + ", price=" + price + "]";
 	}
 }
