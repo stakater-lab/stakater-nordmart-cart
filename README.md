@@ -54,4 +54,4 @@ To deploy app inside a docker container
 
 ### Helm Charts
 
-To deploy using helm, see the sample HelmRelease [here](https://github.com/stakater-lab/nordmart-dev-apps/blob/master/releases/cart-helm-release.yaml)
+To deploy using helm, see the sample HelmRelease [here](https://github.com/stakater-lab/nordmart-dev-apps/blob/master/releases/cart-helm-release.yaml).
