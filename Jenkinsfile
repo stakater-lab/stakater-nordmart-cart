@@ -4,7 +4,7 @@
 releaseApplication {
     appName = "cart"
     appType = "maven"
-    builderImage = "stakater/builder-maven:3.5.4-jdk1.8-v2.0.1-v0.0.6"
+    builderImage = "stakater/builder-maven:3.5.4-jdk1.8-v2.0.9-v0.0.8"
     goal = "clean package"
     notifySlack = false
     runIntegrationTest = false
