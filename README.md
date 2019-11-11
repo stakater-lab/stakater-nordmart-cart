@@ -2,7 +2,7 @@
 
 ## Overview
 
-A maven spring boot cart application
+A maven spring boot cart application.
 
 ## Dependencies
 
