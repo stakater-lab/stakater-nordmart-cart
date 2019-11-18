@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-@Library('github.com/stakater/stakater-pipeline-library@v2.16.14') _
+@Library('github.com/stakater/stakater-pipeline-library@add-e2e') _
 
 releaseApplication {
     appName = "cart"
@@ -14,4 +14,5 @@ releaseApplication {
     tokenCredentialID = 'GithubToken'
     serviceAccount = "jenkins"
     dockerRepositoryURL = 'docker-delivery.cp-stakater.com:443'
+    e2eTestJob = true
 }
