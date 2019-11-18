@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-@Library('github.com/stakater/stakater-pipeline-library@add-e2e') _
+@Library('github.com/stakater/stakater-pipeline-library@v2.16.15') _
 
 releaseApplication {
     appName = "cart"
