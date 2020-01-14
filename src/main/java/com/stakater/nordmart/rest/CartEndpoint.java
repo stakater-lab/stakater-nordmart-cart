@@ -40,6 +40,7 @@ public class CartEndpoint implements Serializable {
     @Path("/{cartId}")
     @Produces(MediaType.APPLICATION_JSON)
     public ShoppingCart getCart(@PathParam("cartId") String cartId) {
+        LOG.info("Rest request to get cart with id {}", cartId);
         return shoppingCartService.getShoppingCart(cartId);
     }
 
@@ -49,6 +50,7 @@ public class CartEndpoint implements Serializable {
     public ShoppingCart add(@PathParam("cartId") String cartId,
                             @PathParam("itemId") String itemId,
                             @PathParam("quantity") int quantity) throws Exception {
+        LOG.info("Rest request to add cartId {}, itemId {}, quantity {}", cartId, itemId, quantity);
         return shoppingCartService.addItem(cartId, itemId, quantity);
     }
 
@@ -57,7 +59,7 @@ public class CartEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public ShoppingCart set(@PathParam("cartId") String cartId,
                             @PathParam("tmpId") String tmpId) throws Exception {
-
+        LOG.info("Rest request to set cartId {}, tmpId {}", cartId, tmpId);
         return shoppingCartService.set(cartId, tmpId);
     }
 
@@ -67,7 +69,7 @@ public class CartEndpoint implements Serializable {
     public ShoppingCart delete(@PathParam("cartId") String cartId,
                                @PathParam("itemId") String itemId,
                                @PathParam("quantity") int quantity) throws Exception {
-
+        LOG.info("Rest request to delete cartId {}, itemId {}, quantity {}", cartId, itemId, quantity);
         return shoppingCartService.deleteItem(cartId, itemId, quantity);
     }
 
@@ -76,6 +78,7 @@ public class CartEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public ShoppingCart checkout(@PathParam("cartId") String cartId) {
         // TODO: register purchase of shoppingCart items by specific user in session
+        LOG.info("Rest request to checkout cartId {}", cartId);
         return shoppingCartService.checkout(cartId);
     }
 }

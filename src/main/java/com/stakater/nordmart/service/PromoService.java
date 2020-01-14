@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.stakater.nordmart.tracing.Traced;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,7 +25,8 @@ public class PromoService implements Serializable {
 		promotionSet = new HashSet<Promotion>();
 		promotionSet.add(new Promotion("329299", .25));
 	}
-			
+
+	@Traced
 	public void applyCartItemPromotions(ShoppingCart shoppingCart) {
 		if ( shoppingCart != null && shoppingCart.getShoppingCartItemList().size() > 0 ) {
 			Map<String, Promotion> promoMap = new HashMap<String, Promotion>(); 

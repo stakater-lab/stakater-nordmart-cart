@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
+import com.stakater.nordmart.tracing.Traced;
 import org.infinispan.client.hotrod.RemoteCacheManager;
 import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
 import org.infinispan.commons.api.BasicCacheContainer;
@@ -73,6 +74,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         }
     }
 
+    @Traced
     @Override
     public ShoppingCart getShoppingCart(String cartId) {
         if (!carts.containsKey(cartId)) {
@@ -128,6 +130,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         }
     }
 
+    @Traced
     @Override
     public Product getProduct(String itemId) {
         List<Product> products = catalogService.products(Utils.getIstioHeaders());
@@ -136,6 +139,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return productMap.get(itemId);
     }
 
+    @Traced
     @Override
     public ShoppingCart deleteItem(String cartId, String itemId, int quantity) {
         List<ShoppingCartItem> toRemoveList = new ArrayList<>();
@@ -159,6 +163,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return cart;
     }
 
+    @Traced
     @Override
     public ShoppingCart checkout(String cartId) {
         ShoppingCart cart = getShoppingCart(cartId);
@@ -168,6 +173,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return cart;
     }
 
+    @Traced
     @Override
     public ShoppingCart addItem(String cartId, String itemId, int quantity) {
         ShoppingCart cart = getShoppingCart(cartId);
@@ -196,6 +202,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return cart;
     }
 
+    @Traced
     @Override
     public ShoppingCart set(String cartId, String tmpId) {
 
