@@ -5,6 +5,8 @@ import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import java.io.IOException;
 import java.util.HashMap;
+
+import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
@@ -18,6 +20,11 @@ public class CartServiceApplication
     public static void main(String[] args)
     {
         SpringApplication.run(CartServiceApplication.class, args);
+    }
+
+    @Bean
+    public KeycloakSpringBootConfigResolver keycloakConfigResolver() {
+        return new KeycloakSpringBootConfigResolver();
     }
 
     @Bean
