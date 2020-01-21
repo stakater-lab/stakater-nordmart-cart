@@ -4,15 +4,6 @@ import com.stakater.nordmart.common.Utils;
 import com.stakater.nordmart.model.Product;
 import com.stakater.nordmart.model.ShoppingCart;
 import com.stakater.nordmart.model.ShoppingCartItem;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-import javax.annotation.PostConstruct;
-
 import com.stakater.nordmart.tracing.Traced;
 import org.infinispan.client.hotrod.RemoteCacheManager;
 import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
@@ -22,6 +13,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Component
 public class ShoppingCartServiceImpl implements ShoppingCartService {

@@ -1,7 +1,13 @@
 package com.stakater.nordmart.rest;
 
 import com.stakater.nordmart.model.ShoppingCart;
-import java.io.Serializable;
+import com.stakater.nordmart.service.ShoppingCartService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.WebApplicationContext;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -10,16 +16,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.WebApplicationContext;
-
-import com.stakater.nordmart.service.ShoppingCartService;
+import java.io.Serializable;
 
 
 @RestController
