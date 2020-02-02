@@ -4,6 +4,17 @@
 
 A maven spring boot cart application.
 
+## Configurations
+
+Environment variables can be provided to configure the cart service.
+
+**Keycloak configurations**
+* CATALOG_ENDPOINT - Endpoint of the catalog endpoint
+* KEYCLOAK_REALM - Keycloak realm name.
+* KEYCLOAK_URL - Keycloak authentication URL.
+* KEYCLOAK_CLIENT_BACKEND - Keycloak client for backend token based authentication.
+* KEYCLOAK_CLIENT_SECRET_KEY - Keycloak secret key for accessing the keycloak client backend.
+
 ## Dependencies
 
 It requires following things to be installed:
