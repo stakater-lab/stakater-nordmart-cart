@@ -3,13 +3,14 @@ package com.stakater.nordmart.service;
 import com.stakater.nordmart.model.Promotion;
 import com.stakater.nordmart.model.ShoppingCart;
 import com.stakater.nordmart.model.ShoppingCartItem;
+import com.stakater.nordmart.tracing.Traced;
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import org.springframework.stereotype.Component;
 
 @Component
 public class PromoService implements Serializable {
@@ -24,7 +25,8 @@ public class PromoService implements Serializable {
 		promotionSet = new HashSet<Promotion>();
 		promotionSet.add(new Promotion("329299", .25));
 	}
-			
+
+	@Traced
 	public void applyCartItemPromotions(ShoppingCart shoppingCart) {
 		if ( shoppingCart != null && shoppingCart.getShoppingCartItemList().size() > 0 ) {
 			Map<String, Promotion> promoMap = new HashMap<String, Promotion>(); 

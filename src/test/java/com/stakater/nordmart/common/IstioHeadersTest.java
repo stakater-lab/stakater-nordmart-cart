@@ -1,15 +1,17 @@
 package com.stakater.nordmart.common;
 
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
-;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.when;
+
+;
 
 
 /**

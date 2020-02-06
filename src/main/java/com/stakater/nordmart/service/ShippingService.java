@@ -1,11 +1,13 @@
 package com.stakater.nordmart.service;
 
 import com.stakater.nordmart.model.ShoppingCart;
+import com.stakater.nordmart.tracing.Traced;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ShippingService {
 
+	@Traced
 	public void calculateShipping(ShoppingCart sc) {
 		if ( sc != null ) {
 			if ( sc.getCartItemTotal() >= 0 && sc.getCartItemTotal() < 25) {

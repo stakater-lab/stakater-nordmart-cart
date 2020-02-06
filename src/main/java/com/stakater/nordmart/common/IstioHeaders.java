@@ -1,8 +1,8 @@
 package com.stakater.nordmart.common;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 
 public class IstioHeaders
 {

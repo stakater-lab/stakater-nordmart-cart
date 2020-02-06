@@ -1,10 +1,11 @@
 package com.stakater.nordmart.common;
 
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 public class Utils
 {

@@ -4,15 +4,7 @@ import com.stakater.nordmart.common.Utils;
 import com.stakater.nordmart.model.Product;
 import com.stakater.nordmart.model.ShoppingCart;
 import com.stakater.nordmart.model.ShoppingCartItem;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-import javax.annotation.PostConstruct;
-
+import com.stakater.nordmart.tracing.Traced;
 import org.infinispan.client.hotrod.RemoteCacheManager;
 import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
 import org.infinispan.commons.api.BasicCacheContainer;
@@ -21,6 +13,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Component
 public class ShoppingCartServiceImpl implements ShoppingCartService {
@@ -73,6 +73,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         }
     }
 
+    @Traced
     @Override
     public ShoppingCart getShoppingCart(String cartId) {
         if (!carts.containsKey(cartId)) {
@@ -128,6 +129,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         }
     }
 
+    @Traced
     @Override
     public Product getProduct(String itemId) {
         List<Product> products = catalogService.products(Utils.getIstioHeaders());
@@ -136,6 +138,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return productMap.get(itemId);
     }
 
+    @Traced
     @Override
     public ShoppingCart deleteItem(String cartId, String itemId, int quantity) {
         List<ShoppingCartItem> toRemoveList = new ArrayList<>();
@@ -159,6 +162,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return cart;
     }
 
+    @Traced
     @Override
     public ShoppingCart checkout(String cartId) {
         ShoppingCart cart = getShoppingCart(cartId);
@@ -168,6 +172,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return cart;
     }
 
+    @Traced
     @Override
     public ShoppingCart addItem(String cartId, String itemId, int quantity) {
         ShoppingCart cart = getShoppingCart(cartId);
@@ -196,6 +201,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return cart;
     }
 
+    @Traced
     @Override
     public ShoppingCart set(String cartId, String tmpId) {
 
