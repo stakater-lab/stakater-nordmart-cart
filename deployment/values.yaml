@@ -4,7 +4,7 @@ deployment:
   podLabels:
     app: cart
   image:
-    repository: docker.delivery.stakater.com:443/stakater-lab/cart
+    repository: stakater/stakater-nordmart-cart
     tag: v0.0.1
   imagePullSecrets: "docker-registry-nexus-secret"
   volumes: {}
@@ -66,4 +66,3 @@ ingress:
     # - secretName: chart-example-tls
     #   hosts:
     #     - chart-example.local
-
