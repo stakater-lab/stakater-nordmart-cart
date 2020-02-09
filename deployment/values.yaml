@@ -6,11 +6,10 @@ deployment:
   image:
     repository: stakater/stakater-nordmart-cart
     tag: v0.0.1
-  imagePullSecrets: "docker-registry-nexus-secret"
   volumes: {}
   env:
   - name: CATALOG_ENDPOINT
-    value: "catalog.namespace.svc.cluster.local:8080"
+    value: "catalog.default.svc.cluster.local:8080"
   - name: KEYCLOAK_REALM
     value: "nordmart"
   - name: KEYCLOAK_URL
