@@ -1,0 +1,54 @@
+---
+# Source: application/templates/deployment.yaml
+
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: cart
+    group: com.stakater.platform
+    provider: stakater
+    version: "1.0.0"
+    chart: "application-0.0.12"
+    release: "RELEASE-NAME"
+    heritage: "Tiller"
+  annotations:
+    reloader.stakater.com/auto: "true"
+    
+  name: cart
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cart
+        group: com.stakater.platform
+        provider: stakater
+        version: "1.0.0"
+        chart: "application-0.0.12"
+        release: "RELEASE-NAME"
+        heritage: "Tiller"
+        app: cart
+        
+    spec:      
+      imagePullSecrets:
+      - name: docker-registry-nexus-secret
+      containers:
+      - name: cart
+        image: "docker.release.stakater.com:443/stakater/cart:v0.0.1"
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: CATALOG_ENDPOINT
+            value: catalog.nordmart-store:8080
+          - name: JAEGER_ENDPOINT
+            value: http://jaeger-collector.istio-system:14268/api/traces
+          - name: KEYCLOAK_REALM
+            value: nordmart
+          - name: KEYCLOAK_URL
+            value: https://keycloak-security.DOMAIN:8180/auth/
+          - name: KEYCLOAK_CLIENT_BACKEND
+            value: stakater-nordmart-backend
+          - name: KEYCLOAK_CLIENT_SECRET_KEY
+            value: <concealed>
+          
+      serviceAccountName: default        
