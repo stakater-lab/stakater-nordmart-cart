@@ -12,9 +12,6 @@ metadata:
     chart: "application-0.0.12"
     release: "RELEASE-NAME"
     heritage: "Tiller"
-  annotations:
-    reloader.stakater.com/auto: "true"
-    
   name: cart
 spec:
   replicas: 1
@@ -30,25 +27,42 @@ spec:
         heritage: "Tiller"
         app: cart
         
-    spec:      
-      imagePullSecrets:
-      - name: docker-registry-nexus-secret
+    spec:
       containers:
       - name: cart
-        image: "docker.release.stakater.com:443/stakater/cart:v0.0.1"
+        image: "stakater/stakater-nordmart-cart:v0.0.1"
         imagePullPolicy: IfNotPresent
         env:
           - name: CATALOG_ENDPOINT
-            value: catalog.nordmart-store:8080
-          - name: JAEGER_ENDPOINT
-            value: http://jaeger-collector.istio-system:14268/api/traces
+            value: catalog:8080
           - name: KEYCLOAK_REALM
             value: nordmart
           - name: KEYCLOAK_URL
-            value: https://keycloak-security.DOMAIN:8180/auth/
+            value: https://keycloak-dev.DOMAIN/auth/
           - name: KEYCLOAK_CLIENT_BACKEND
             value: stakater-nordmart-backend
           - name: KEYCLOAK_CLIENT_SECRET_KEY
-            value: <concealed>
+            value: 7672aea2-81ff-4aa2-affe-daf3bad10334
+          - name: JAEGER_ENDPOINT
+            value: http://jaeger-collector.istio-system:14268/api/traces
           
-      serviceAccountName: default        
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        
+      serviceAccountName: cart        
