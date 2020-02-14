@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.stakater.nordmart</groupId>
     <artifactId>cart</artifactId>
-    <version>v0.0.29</version>
+    <version>v0.0.30</version>
     <name>Nordmart Cart Service</name>
     <description>Nordmart cart Service with Spring Boot</description>
     <properties>
