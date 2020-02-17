@@ -1,5 +1,7 @@
 applicationName: "cart"
 deployment:
+  additionalLabels:
+    appCategory: "frontend"
   annotations:
   podLabels:
     app: cart
