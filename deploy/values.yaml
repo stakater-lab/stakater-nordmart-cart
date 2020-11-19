@@ -48,7 +48,7 @@ application:
   rbac:
     create: true
     serviceAccount:
-      enable: true
+      enabled: true
       create: true
   configMap:
     enabled: false
