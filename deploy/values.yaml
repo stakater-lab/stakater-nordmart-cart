@@ -4,8 +4,6 @@ application:
     additionalLabels:
       appCategory: "backend"
     annotations:
-    podLabels:
-      app: cart
     image:
       repository: stakater/stakater-nordmart-cart
       tag: v0.0.2
