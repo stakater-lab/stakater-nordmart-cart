@@ -1,10 +1,10 @@
 application:
   applicationName: "cart"
   deployment:
-    imagePullSecrets: nexus-creds
     additionalLabels:
       appCategory: "backend"
     annotations:
+    imagePullSecrets: nexus-creds
     image:
       repository: stakater/stakater-nordmart-cart
       tag: v0.0.2
