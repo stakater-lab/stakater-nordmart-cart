@@ -1,5 +1,6 @@
 applicationName: "cart"
 deployment:
+  
   additionalLabels:
     appCategory: "backend"
   annotations:
@@ -8,7 +9,7 @@ deployment:
   image:
     repository: stakater/stakater-nordmart-cart
     tag: v0.0.2
-  volumes: {}
+  volumes: {} 
   env:
   - name: CATALOG_ENDPOINT
     value: "catalog:8080"
