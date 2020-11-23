@@ -1,6 +1,7 @@
 application:
   applicationName: "cart"
   deployment:
+    imagePullSecrets: nexus-creds
     additionalLabels:
       appCategory: "backend"
     annotations:
