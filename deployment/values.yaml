@@ -9,6 +9,8 @@ deployment:
     repository: stakater/stakater-nordmart-cart
     tag: v0.0.2
   volumes: {}
+  imagePullSecrets:
+     - name: nexus-creds 
   env:
   - name: CATALOG_ENDPOINT
     value: "catalog:8080"
