@@ -1,6 +1,7 @@
 application:
   applicationName: "cart"
   deployment:
+    replicas: 1
     additionalLabels:
       appCategory: "backend"
     annotations:
