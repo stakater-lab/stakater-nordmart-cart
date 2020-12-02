@@ -78,4 +78,3 @@ Helm operator needs to to be running inside the cluster. Helm operator is deploy
 To create helm release of this application using the command given here:
 
 kubectl apply -f [helm-release](https://github.com/stakater-lab/nordmart-dev-apps/blob/master/releases/cart-helm-release.yaml).yaml -n <namespace-name>
-
