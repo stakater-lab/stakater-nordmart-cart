@@ -1,18 +1,23 @@
 # stakater-nordmart-cart
 
+
 ## Overview
 
 A maven spring boot cart application.
 
 ## Configurations
 
+
 Environment variables can be provided to configure the cart service.
 
 * CATALOG_ENDPOINT - Endpoint of the catalog endpoint
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 99213f64779466ca8d87e5964be13cb4c36149c7
 **Keycloak configurations**
 * KEYCLOAK_REALM - Keycloak realm name.
 * KEYCLOAK_URL - Keycloak authentication URL.
