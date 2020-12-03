@@ -8,7 +8,9 @@ A maven spring boot cart application.
 
 
 ## Configurations
-
+  
+  
+  
 Environment variables can be provided to configure the cart service.
 
 
