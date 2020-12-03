@@ -12,6 +12,7 @@ Environment variables can be provided to configure the cart service.
 
 
 
+
 **Keycloak configurations**
 * KEYCLOAK_REALM - Keycloak realm name.
 * KEYCLOAK_URL - Keycloak authentication URL.
