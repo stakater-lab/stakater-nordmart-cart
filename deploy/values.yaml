@@ -9,6 +9,14 @@ application:
       repository: stakater/stakater-nordmart-cart
       tag: v0.0.2
     volumes: {}
+    # Resources to be defined for pod
+    resources: 
+      limits:
+        memory: 512Mi
+        cpu: 0.5
+      requests:
+        memory: 128Mi
+        cpu: 0.1    
     env:
     - name: CATALOG_ENDPOINT
       value: "catalog:8080"
@@ -40,7 +48,7 @@ application:
         initialDelaySeconds: 150
         httpGet:
           path: /health
-          port: 8080
+          port: 8080          
   service:
     ports:
     - port: 8080
@@ -53,11 +61,3 @@ application:
       create: true
   configMap:
     enabled: false
-  # Resources to be defined for pod
-  resources: 
-    limits:
-      memory: 512Mi
-      cpu: 0.5
-    requests:
-      memory: 128Mi
-      cpu: 0.1
