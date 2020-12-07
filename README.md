@@ -1,8 +1,6 @@
 # stakater-nordmart-cart
 
 
-
-
 ## Overview
 
 A maven spring boot cart application.
