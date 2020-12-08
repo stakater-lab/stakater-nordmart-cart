@@ -29,6 +29,7 @@ It requires following things to be installed:
 
 * Maven
 
+
 ## Deployment strategy
 
 ### Local deployment
