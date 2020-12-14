@@ -4,7 +4,14 @@ application:
     additionalLabels:
       appCategory: "backend"
     annotations:
-    imagePullSecrets: nexus-creds
+    resources: 
+      limits:
+         memory: 1Gi
+         cpu: 0.5
+      requests:
+        memory: 128Mi
+        cpu: 0.1
+    imagePullSecrets: nexus-docker-config-forked
     image:
       repository: stakater/stakater-nordmart-cart
       tag: v0.0.2
