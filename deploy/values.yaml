@@ -1,6 +1,9 @@
 application:
   applicationName: "cart"
   deployment:
+    envFrom:
+    - type: configmap
+      name: ""
     additionalLabels:
       appCategory: "backend"
     annotations:
@@ -24,8 +27,7 @@ application:
       requests:
         memory: 128Mi
         cpu: 0.1    
-    envFrom:
-    - type: configmap
+    
     probes:
       readinessProbe:
         failureThreshold: 3
