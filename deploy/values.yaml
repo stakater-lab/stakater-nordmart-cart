@@ -58,7 +58,8 @@ application:
   configMap:
     enabled: true
     files:
-    - data:
+    - nameSuffix: ""
+      data:
         CATALOG_ENDPOINT: "catalog:8080"
         KEYCLOAK_REALM: "nordmart"
         KEYCLOAK_URL: "https://keycloak-NAMESPACE.DOMAIN/auth/"
