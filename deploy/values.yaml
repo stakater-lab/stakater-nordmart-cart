@@ -57,10 +57,11 @@ application:
       create: true
   configMap:
     enabled: true
-    data:
-      CATALOG_ENDPOINT: "catalog:8080"
-      KEYCLOAK_REALM: "nordmart"
-      KEYCLOAK_URL: "https://keycloak-NAMESPACE.DOMAIN/auth/"
-      KEYCLOAK_CLIENT_BACKEND: "stakater-nordmart-backend"
-      KEYCLOAK_CLIENT_SECRET_KEY: "7672aea2-81ff-4aa2-affe-daf3bad10334"
-      JAEGER_ENDPOINT: "http://jaeger-collector.istio-system:14268/api/traces"
+    files:
+    - data:
+        CATALOG_ENDPOINT: "catalog:8080"
+        KEYCLOAK_REALM: "nordmart"
+        KEYCLOAK_URL: "https://keycloak-NAMESPACE.DOMAIN/auth/"
+        KEYCLOAK_CLIENT_BACKEND: "stakater-nordmart-backend"
+        KEYCLOAK_CLIENT_SECRET_KEY: "7672aea2-81ff-4aa2-affe-daf3bad10334"
+        JAEGER_ENDPOINT: "http://jaeger-collector.istio-system:14268/api/traces"
